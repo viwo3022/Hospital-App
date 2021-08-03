@@ -14,6 +14,7 @@ struct StateModel: Identifiable {
 
 class HospitalViewModel: ObservableObject {
     var stateList: [StateModel] = [
+        StateModel(id: .NA, name: "Select a State"),
         StateModel(id: .AL, name: "Alabama"),
         StateModel(id: .AK, name: "Alaska"),
         StateModel(id: .AZ , name: "Arizona"),
@@ -63,8 +64,8 @@ class HospitalViewModel: ObservableObject {
         StateModel(id: .WA, name: "Washington"),
         StateModel(id: .WV, name: "West Virginia"),
         StateModel(id: .WI, name: "Wisconson"),
-        StateModel(id: .WY, name: "Wyoming"),
-        StateModel(id: .NA, name: "Select a State")
+        StateModel(id: .WY, name: "Wyoming")
+        
 
     ]
     
