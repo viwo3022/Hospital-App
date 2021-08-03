@@ -14,9 +14,9 @@ Hospital App is used to display Hospitals and Hospital details in a state.
   <li> SwuiftUI
    
 ### Screenshots
-![Hospital View](./Screenshot/hospitalView.png)
-![Hospital Row](./Screenshot/hospitalRow.png)
-![Hospital Detail](./Screenshot/hospitalDetail.png)
+![Hospital View](./Screenshots/hospitalView.png)
+![Hospital Row](./Screenshots/hospitalRow.png)
+![Hospital Detail](./Screenshots/hospitalDetail.png)
  </ol>
  
    
