@@ -6,10 +6,10 @@
 * [Screenshots](#screenshots)
 
 
-### Intro:
+### Intro
 Hospital App is used to display Hospitals and Hospital details in a state.
     
-### Technologies:
+### Technologies
   <li> Swift Version 12.5.1
   <li> SwuiftUI
    
