@@ -10,6 +10,7 @@ import SwiftUI
 struct HospitalView: View {
     @State private var stateName: StateAbbreviation = .NA
     @StateObject var viewModel = HospitalViewModel()
+    @State private var alertIsPresented = false
 
     var body: some View {
         
@@ -18,6 +19,7 @@ struct HospitalView: View {
             
             VStack(alignment: .center){
                 Spacer().frame(height: 32)
+                
                 Text("Hospital Finder")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -25,7 +27,7 @@ struct HospitalView: View {
                     .multilineTextAlignment(.center)
                 
                 Spacer()
-                    .frame(height: 16)
+                    .frame(height: 24)
                 
                 HStack{
                     
@@ -45,13 +47,16 @@ struct HospitalView: View {
                             
                         }
                     })
+                    
                     .pickerStyle(MenuPickerStyle())
                     .foregroundColor(Color.white)
                     .clipShape(Capsule())
-                    .onChange(of: stateName) { _ in
+                    .onChange(of: stateName) { state in
                    
                         viewModel.getHospitals(for: stateName)
-                       
+                        if viewModel.hospitalData.isEmpty && state != .NA  {
+                            self.alertIsPresented = true
+                        }
                        
                         
                     }
@@ -60,13 +65,17 @@ struct HospitalView: View {
                     .background(Color("yellow"))
                     .padding(.horizontal, 24).background((Color("yellow"))).cornerRadius(25)
                     
+                    .alert(isPresented: $alertIsPresented, content: {
+                        Alert(title: Text("Error"), message: Text("There was an issue with your request"), dismissButton: .default(Text("Dismiss")))
+                    })
+                    
                     Spacer()
                 }
                 .padding(.horizontal, 42)
-                .padding(.vertical, 20)
+                .padding(.vertical,16)
                 
                 
-                Spacer().frame(height: 32)
+                Spacer().frame(height: 42)
 
                 List(viewModel.hospitalData){ hospital in
                     NavigationLink(destination: HospitalDetailView(data: hospital)){

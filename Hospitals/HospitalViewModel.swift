@@ -74,6 +74,7 @@ class HospitalViewModel: ObservableObject {
     
     /// Get Hospital data for state parameter
     /// - Parameter state: Abbreviation for state
+    
     func getHospitals(for state: StateAbbreviation) {
         guard state != .NA else {
             hospitalData = []
@@ -92,6 +93,7 @@ class HospitalViewModel: ObservableObject {
     /// Get hospital name for hospital in state
     /// - Parameter abbreviation: Abbreviation for state
     /// - Returns: Name of Hospital
+    
     func getName(for abbreviation: StateAbbreviation) -> String {
         stateList.first(where: {$0.id == abbreviation})?.name ?? "Unknown"
         
