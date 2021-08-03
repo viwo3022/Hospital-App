@@ -14,11 +14,13 @@ Hospital App is used to display Hospitals and Hospital details in a state.
   <li> SwuiftUI
    
 ### Screenshots
-<tr>
-    <th>![Hospital View](./Screenshots/hospitalView.PNG)
-    <th>![Hospital Row](./Screenshots/hospitalRow.PNG)
-    <th>![Hospital Detail](./Screenshots/hospitalDetail.PNG)
-<tr>
+
+    
+<p float="left">
+  <img src="./Screenshots/hospitalView.PNG" width="100" />
+  <img src="./Screenshots/hospitalRow.PNG" width="100" /> 
+  <img src="./Screenshots/hospitalDetail.PNG" width="100" />
+</p>
  </ol>
  
    
