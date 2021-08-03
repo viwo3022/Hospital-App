@@ -16,5 +16,68 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5607439-2F64-456B-A497-2475CC6DD562"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hospitals/HospitalView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "HospitalView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B5607439-2F64-456B-A497-2475CC6DD562 - 99ee55ee6cbfcb3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Hospitals.HospitalView.isNA : Swift.Bool"
+                  moduleName = "Hospitals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viewong/Desktop/Hospitals/Hospitals/HospitalView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "B5607439-2F64-456B-A497-2475CC6DD562 - 4aad36830dccb9b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hospitals.HospitalView.init(viewModel: @autoclosure () -&gt; Hospitals.HospitalViewModel) -&gt; Hospitals.HospitalView"
+                  moduleName = "Hospitals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viewong/Desktop/Hospitals/Hospitals/HospitalView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "B5607439-2F64-456B-A497-2475CC6DD562 - 38b180df01dfddfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hospitals.HospitalView.init() -&gt; Hospitals.HospitalView"
+                  moduleName = "Hospitals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viewong/Desktop/Hospitals/Hospitals/HospitalView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

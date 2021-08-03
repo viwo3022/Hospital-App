@@ -75,6 +75,10 @@ class HospitalViewModel: ObservableObject {
     /// Get Hospital data for state parameter
     /// - Parameter state: Abbreviation for state
     func getHospitals(for state: StateAbbreviation) {
+        guard state != .NA else {
+            hospitalData = []
+            return
+        }
         NetworkHandler.shared.requestData(in: state) { [weak self] data in
             guard let self = self else { return }
             DispatchQueue.main.async {

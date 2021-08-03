@@ -10,13 +10,14 @@ import SwiftUI
 struct HospitalView: View {
     @State private var stateName: StateAbbreviation = .NA
     @StateObject var viewModel = HospitalViewModel()
-    @State private var isNA: Bool = true
-    
+
     var body: some View {
         
         
         NavigationView{
+            
             VStack(alignment: .center){
+                Spacer().frame(height: 32)
                 Text("Hospital Finder")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -48,13 +49,9 @@ struct HospitalView: View {
                     .foregroundColor(Color.white)
                     .clipShape(Capsule())
                     .onChange(of: stateName) { _ in
-                        if stateName != .NA{
-                            viewModel.getHospitals(for: stateName)
-                            isNA = false
-                        }
-                        else{
-                            isNA = true
-                        }
+                   
+                        viewModel.getHospitals(for: stateName)
+                       
                        
                         
                     }
@@ -70,20 +67,19 @@ struct HospitalView: View {
                 
                 
                 Spacer().frame(height: 32)
-                if !isNA{
-                    List(viewModel.hospitalData){ hospital in
-                        NavigationLink(destination: HospitalDetailView(data: hospital)){
-                            HospitalRow(hospitalName: hospital.name ?? "")
-                        }
+
+                List(viewModel.hospitalData){ hospital in
+                    NavigationLink(destination: HospitalDetailView(data: hospital)){
+                        HospitalRow(hospitalName: hospital.name ?? "")
                     }
-                    .listStyle(PlainListStyle())
                 }
-                else{
-                    Spacer()
-                }
+                .listStyle(PlainListStyle())
+                
                 Spacer()
             }
+            .navigationBarHidden(true)
         }
+      
     }
 }
 
