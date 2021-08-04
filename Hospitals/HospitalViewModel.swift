@@ -66,7 +66,7 @@ class HospitalViewModel: ObservableObject {
         StateModel(id: .WI, name: "Wisconson"),
         StateModel(id: .WY, name: "Wyoming")
         
-
+        
     ]
     
     @Published var hospitalData: [Hospital] = []
@@ -90,7 +90,6 @@ class HospitalViewModel: ObservableObject {
                 }
                 self.hospitalData = data
             }
-            
         }
     }
     
@@ -101,7 +100,6 @@ class HospitalViewModel: ObservableObject {
     
     func getName(for abbreviation: StateAbbreviation) -> String {
         stateList.first(where: {$0.id == abbreviation})?.name ?? "Unknown"
-        
     }
 }
 

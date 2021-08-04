@@ -42,8 +42,6 @@ struct Hospital: Decodable, Identifiable {
         bedCount = try obj.decodeIfPresent(String.self, forKey: .bedCount)
         county = try obj.decodeIfPresent(String.self, forKey: .county)
         
-        
-        
     }
     
     

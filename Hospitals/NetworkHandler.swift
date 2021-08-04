@@ -28,8 +28,6 @@ class NetworkHandler: NSObject {
     var dataTask:URLSessionDataTask?
     let session =  URLSession(configuration: URLSessionConfiguration.default)
     
- 
-    
     
     /// Get Request from URL
     /// - Parameters:
@@ -43,15 +41,11 @@ class NetworkHandler: NSObject {
             fatalError("invalid")
             
         }
-        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         return fetchHospitalData(with: request, completion: completion)
-        
-        
     }
     
- 
     
     /// Fetch the JSON File with the hospital data
     /// - Parameters:
@@ -61,7 +55,7 @@ class NetworkHandler: NSObject {
     private func fetchHospitalData(with myRequest: URLRequest, completion: @escaping ([Hospital], Error?) -> Void) {
         dataTask?.cancel()
         dataTask = session.dataTask(with: myRequest) { data, response, error in
-
+            
             
             if let error = error{
                 debugPrint(error.localizedDescription)
@@ -70,7 +64,7 @@ class NetworkHandler: NSObject {
             }
             else if
                 let data = data,
-                let response = response as? HTTPURLResponse, response.statusCode == 200{ //if success (code 200)
+                let response = response as? HTTPURLResponse, response.statusCode == 200{
                 self.decodeData(data: data, completion: completion)
             }
             else{
@@ -79,7 +73,7 @@ class NetworkHandler: NSObject {
         }
         dataTask?.resume()
     }
- 
+    
     
     /// Maps JSON data to indivisual objects of type hospital
     /// - Parameter data: passed in data
@@ -100,7 +94,7 @@ class NetworkHandler: NSObject {
         
         
     }
- 
+    
     
     /// Displays hospital data
     /// - Parameter data: data

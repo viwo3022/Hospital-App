@@ -25,6 +25,7 @@ struct HospitalRow: View {
         
     }
 }
+
 struct HospitalRow_Previews: PreviewProvider {
     static var previews: some View {
         HospitalRow(hospitalName: "hospital name")
