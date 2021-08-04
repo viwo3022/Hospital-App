@@ -70,7 +70,8 @@ class HospitalViewModel: ObservableObject {
     ]
     
     @Published var hospitalData: [Hospital] = []
-    
+    @Published var errorMessage: String = ""
+    @Published var displayingAlert: Bool = false
     
     /// Get Hospital data for state parameter
     /// - Parameter state: Abbreviation for state
@@ -80,9 +81,13 @@ class HospitalViewModel: ObservableObject {
             hospitalData = []
             return
         }
-        NetworkHandler.shared.requestData(in: state) { [weak self] data in
+        NetworkHandler.shared.requestData(in: state) { [weak self] (data, error) in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                if let error = error{
+                    self.errorMessage = error.localizedDescription
+                    self.displayingAlert = true
+                }
                 self.hospitalData = data
             }
             

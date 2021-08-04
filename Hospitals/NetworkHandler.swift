@@ -7,6 +7,19 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case dataNotReceived
+}
+
+extension NetworkError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .dataNotReceived:
+            return "Server did not return any data"
+        }
+    }
+}
+
 class NetworkHandler: NSObject {
     static let shared = NetworkHandler()
     
@@ -23,7 +36,7 @@ class NetworkHandler: NSObject {
     ///   - state: abbreviation of stste
     ///   - completion: completion
     
-    func requestData(in state: StateAbbreviation, completion: @escaping ([Hospital]) -> Void)  {
+    func requestData(in state: StateAbbreviation, completion: @escaping ([Hospital], Error?) -> Void)  {
         var urlComp = URLComponents(string: urlString)
         urlComp?.query = "state=\(state.rawValue)"
         guard let url = urlComp?.url else {
@@ -45,27 +58,23 @@ class NetworkHandler: NSObject {
     ///   - myRequest: Pass om a URL request with assigned http methof
     ///   - completion: Completion
     
-    private func fetchHospitalData(with myRequest: URLRequest, completion: @escaping ([Hospital]) -> Void) {
+    private func fetchHospitalData(with myRequest: URLRequest, completion: @escaping ([Hospital], Error?) -> Void) {
         dataTask?.cancel()
         dataTask = session.dataTask(with: myRequest) { data, response, error in
 
             
             if let error = error{
                 debugPrint(error.localizedDescription)
-                completion([])
+                completion([], error)
                 
             }
             else if
                 let data = data,
                 let response = response as? HTTPURLResponse, response.statusCode == 200{ //if success (code 200)
-                let hospitalData: [Hospital] = self.decodeData(data: data)
-                print(data)
-                //print
-                //                displayHospital(data: hospitalData)
-                completion(hospitalData)
+                self.decodeData(data: data, completion: completion)
             }
             else{
-                completion([])
+                completion([], error)
             }
         }
         dataTask?.resume()
@@ -76,26 +85,22 @@ class NetworkHandler: NSObject {
     /// - Parameter data: passed in data
     /// - Returns: Array of hospital objects
     
-    private func decodeData(data: Data?) -> [Hospital]{
+    private func decodeData(data: Data?, completion: @escaping ([Hospital], Error?) -> Void){
         guard let data = data else {
             debugPrint("Data is nil")
-            return []
+            completion([], NetworkError.dataNotReceived)
+            return
         }
-        print("decoding")
         do {
             let hospitalData: [Hospital] = try JSONDecoder().decode([Hospital].self, from: data)
-            return hospitalData
+            completion(hospitalData, nil)
         } catch(let error) {
-            debugPrint(error.localizedDescription)
-            debugPrint("Unknown error occurred while decoding json")
+            completion([], error)
         }
-        return []
+        
         
     }
-    /*
-     func: displayHospital -- print Hospital Data
-     Param: list of Hospital type objects
-     */
+ 
     
     /// Displays hospital data
     /// - Parameter data: data
