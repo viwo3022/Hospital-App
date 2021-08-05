@@ -7,11 +7,12 @@
 
 
 ### Intro
-Hospital App is used to display Hospitals and Hospital details in a state.
+Hospital App is used to display Hospitals and Hospital details in a state. App was built using MVVM architecture.
     
 ### Technologies
-  <li> Swift Version 12.5.1
-  <li> SwuiftUI
+  <li> Swift Version 5
+  <li> XCode 12.5.1
+  <li> SwiftUI
    
 ### Screenshots
 
